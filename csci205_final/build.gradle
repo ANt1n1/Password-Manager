@@ -1,0 +1,81 @@
+// Gradle build file
+// CSCI 205 - Software Engineering and Design
+// Bucknell University
+// Author - B. King / L. Romano
+// Update Log
+// 2022-Fall - added javamodularity, updated versions of javafxplugin
+// 2023-Spring - Modified testLogging events
+// 2025-Spring - Updated to prepare for some deprecation
+
+// Gradle build file
+// CSCI 205 - Software Engineering and Design
+// Bucknell University
+// Author - B. King / L. Romano
+// Update Log
+// 2022-Fall - added javamodularity, updated versions of javafxplugin
+// 2023-Spring - Modified testLogging events
+// 2025-Spring - Updated to prepare for some deprecation
+
+plugins{
+    id 'application'
+    id 'java'
+    id 'idea'
+    id 'org.javamodularity.moduleplugin' version '1.8.15'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group 'org.ABAKBM'
+version '0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+run {
+    standardInput = System.in
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed", "standard_out", "standard_error"
+    }
+}
+
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+application {
+    mainModule.set("csci205_final")
+    mainClass.set("org.ABAKBM.PasswordManagerApp")
+
+    if (project.hasProperty("mainClass")) {
+        mainClass.set(project.property("mainClass").toString())
+    }
+}
+
+// Helper function to create JavaFX-enabled run tasks
+def createJavaFXTask(String taskName, String description, String mainClassName) {
+    tasks.register(taskName, JavaExec) {
+        group = 'application'
+
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = mainClassName
+
+        jvmArgs = [
+                '--module-path', classpath.asPath,
+                '--add-modules', javafx.modules.join(',')
+        ]
+    }
+}
+
+// Create a specific task for running the password manager application
+createJavaFXTask('runPasswordManager', 'Run the Password Manager Application', 'org.ABAKBM.PasswordManagerApp')
