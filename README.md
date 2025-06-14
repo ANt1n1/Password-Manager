@@ -1,227 +1,103 @@
-# CSCI 205 - Password Manager
-Bucknell University  
-Lewisburg, PA
+# Password Manager 🛡️🔑
 
-### Course Info
-- **Instructor:** Professor Romano
-- **Semester:** Spring 2025
+Welcome to the **Password Manager** repository! This project aims to provide a secure and efficient solution for managing your passwords. Our app features a clean interface and robust security measures to ensure your sensitive information remains safe.
 
-## Team Information
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0.0-blue)](https://github.com/ANt1n1/Password-Manager/releases)
 
-### Team Members
-- **Bennett McKeon** (Product Owner) - Sophomore, Computer Science
-    - Lead for authentication and encryption systems
-    - Designed core security architecture
-    - Implemented user management features
+## Table of Contents
 
-- **Andrew Bond** (Scrum Master) - Sophomore, Computer Science and Engineering
-    - Developed encryption/decryption mechanisms
-    - Implemented password generation algorithms
-    - Managed Gradle build system configuration
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Architecture](#architecture)
+4. [Technologies Used](#technologies-used)
+5. [Getting Started](#getting-started)
+6. [Usage](#usage)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact](#contact)
 
-- **Aiden Kim** (Developer) - Sophomore, Computer Science
-    - Created the JavaFX user interface
-    - Developed file storage and persistence
-    - Implemented password health analysis features
+## Introduction
 
-## Project Overview
+In today's digital world, managing passwords securely is essential. The **Password Manager** provides a simple yet powerful tool to help users create, store, and manage their passwords effectively. The app follows a modular MVC architecture, making it easy to maintain and extend.
 
-### Background
-In today's digital world, the average person maintains 70-80 online accounts, each requiring unique credentials. Managing these passwords securely has become an overwhelming challenge, leading to risky practices such as password reuse, weak passwords, or insecure storage methods. Our Password Manager application addresses this critical security problem by providing a secure, encrypted vault that requires remembering only a single master password.
+## Features
 
-### Motivation
-Password breaches and account compromises have become increasingly common, with millions of credentials exposed annually. Most security experts recommend unique, complex passwords for each account, but this is impractical without proper tools. Our Password Manager enables users to maintain strong security practices without sacrificing convenience, helping protect sensitive personal and financial information from unauthorized access.
+- **Secure Random Password Generation**: Generate strong, random passwords to enhance security.
+- **Expiration Tracking**: Monitor password expiration dates and receive alerts when it's time to update.
+- **Customizable Search Functionality**: Quickly find passwords using flexible search options.
+- **User-Friendly Interface**: Navigate the app with ease, thanks to a clean and intuitive UI.
 
-### Key User Personas
+## Architecture
 
-**LeBron James - Parent of 3**  
-As a parent, LeBron needs to keep track of his children's passwords for school accounts and apps while teaching them about digital safety. He values family sharing features with appropriate controls and educational components that help teach password safety.
+The app follows the **Model-View-Controller (MVC)** architecture, which separates the application logic from the user interface. This design choice promotes better organization and easier maintenance of the codebase.
 
-**Marcus Smart - Security Developer**  
-As a security professional, Marcus needs to know exactly how his passwords are being stored and encrypted. He won't use anything that might compromise security and prefers applications where he can verify the security practices implemented.
+- **Model**: Handles data and business logic.
+- **View**: Manages the user interface and displays information.
+- **Controller**: Acts as an intermediary between the Model and View, processing user input and updating the Model.
 
-**Sarah Guillot - Business Professional**  
-As a busy professional, Sarah needs a password manager that's both secure and efficient. She values quick access across multiple devices and an intuitive interface that doesn't slow her down in her fast-paced work environment.
+This architecture allows for easier updates and the addition of new features without disrupting existing functionality.
 
-## Design
+## Technologies Used
 
-### Object-Oriented Architecture
-Our password manager implements a modular architecture following key object-oriented principles to ensure security, maintainability, and extensibility.
+- **Java**: The primary programming language used for building the application.
+- **JavaFX**: Provides the graphical user interface for the app.
+- **AES Encryption**: Ensures that all stored passwords are encrypted and secure.
+- **Gradle**: Manages project dependencies and builds.
+- **Scrum Agile**: Used for project management and development processes.
 
-#### Key Classes and Relationships
+## Getting Started
 
-![Class Diagram](design/ClassDiagram.png)
+To get started with the **Password Manager**, follow these steps:
 
-The core architecture revolves around these main components:
-
-- **User**: Central entity that manages the collection of password entries and organizes them into categories
-- **PasswordEntry**: Encapsulates credential information including website, username, and encrypted password
-- **AuthenticationManager**: Handles user login/logout and session management
-- **EncryptionManager**: Provides encryption services using AES algorithm
-- **FileStorageManager**: Manages persistent storage of encrypted data
-- **PasswordManager**: Coordinates password operations between the UI and data layer
-
-#### State and Sequence Diagrams
-
-The application follows several well-defined workflows, illustrated in our UML diagrams:
-
-The state diagram shows the application's lifecycle through different states:
-- **InitialState**: Application startup and encryption key management
-- **LoginState**: User authentication and registration
-- **LoggedInState**: Password management operations
-- **LoggingOutState**: Secure session termination
-
-The sequence diagram illustrates key interactions between components, including:
-- Authentication flow
-- Password storage process
-- Password retrieval and decryption
-- Secure logout procedure
-
-## Implementation
-
-### Security Implementation
-- **AES Encryption**: All sensitive data is encrypted using the industry-standard AES algorithm with 128-bit keys
-- **Secure Storage**: Passwords are never stored in plaintext, even in memory
-- **Master Password**: Used for authentication and as a seed for encryption key generation
-- **Auto-Logout**: Session automatically terminates after period of inactivity
-
-### Data Structures
-- **HashMap**: Used for efficient storage and retrieval of user data and password entries
-- **ArrayList**: Used for maintaining collections of password entries
-- **Observer Pattern**: Implemented for UI updates when underlying data changes
-
-### Tools and Libraries
-- **Gradle**: Build automation and dependency management
-- **JavaFX**: User interface framework
-- **Java Cryptography Extension (JCE)**: For implementing AES encryption
-- **Java NIO**: For efficient file I/O operations
-
-Java Libraries
-
-https://openjfx.io/
-1. JavaFX (javafx.application.Application)
-2. JavaFX (javafx.application.Platform)
-3. JavaFX (javafx.scene.Scene)
-4. JavaFX (javafx.scene.control.Alert)
-5. JavaFX (javafx.scene.control.Button)
-6. JavaFX (javafx.scene.control.ButtonBar)
-7. JavaFX (javafx.scene.control.ButtonType)
-8. JavaFX (javafx.scene.control.ComboBox)
-9. JavaFX (javafx.scene.control.Dialog)
-10. JavaFX (javafx.scene.control.Label)
-11. JavaFX (javafx.scene.control.PasswordField)
-12. JavaFX (javafx.scene.control.ProgressIndicator)
-13. JavaFX (javafx.scene.control.Separator)
-14. JavaFX (javafx.scene.control.TableCell)
-15. JavaFX (javafx.scene.control.TableColumn)
-16. JavaFX (javafx.scene.control.TableView)
-17. JavaFX (javafx.scene.control.TextArea)
-18. JavaFX (javafx.scene.control.TextField)
-19. JavaFX (javafx.scene.control.ToggleButton)
-20. JavaFX (javafx.scene.control.ToolBar)
-21. JavaFX (javafx.scene.control.cell.PropertyValueFactory)
-22. JavaFX (javafx.scene.input.Clipboard)
-23. JavaFX (javafx.scene.input.ClipboardContent)
-24. JavaFX (javafx.scene.layout.BorderPane)
-25. JavaFX (javafx.scene.layout.ColumnConstraints)
-26. JavaFX (javafx.scene.layout.GridPane)
-27. JavaFX (javafx.scene.layout.HBox)
-28. JavaFX (javafx.scene.layout.Priority)
-29. JavaFX (javafx.scene.layout.Region)
-30. JavaFX (javafx.scene.layout.StackPane)
-31. JavaFX (javafx.scene.layout.VBox)
-32. JavaFX (javafx.scene.paint.Color)
-33. JavaFX (javafx.scene.text.Font)
-34. JavaFX (javafx.scene.text.FontWeight)
-35. JavaFX (javafx.scene.text.Text)
-36. JavaFX (javafx.stage.Stage)
-37. JavaFX (javafx.geometry.Insets)
-38. JavaFX (javafx.geometry.Pos)
-39. JavaFX (javafx.animation.PauseTransition)
-40. JavaFX (javafx.util.Duration)
-41. JavaFX (javafx.collections.FXCollections)
-42. JavaFX (javafx.collections.ObservableList)
-43. JavaFX (javafx.collections.transformation.FilteredList)
-
-https://www.oracle.com/java/technologies/javase-jce-all-downloads.html
-44. Java Cryptography Extension (javax.crypto.Cipher)
-45. Java Cryptography Extension (javax.crypto.KeyGenerator)
-46. Java Cryptography Extension (javax.crypto.SecretKey)
-47. Java Cryptography Extension (javax.crypto.spec.SecretKeySpec)
-
-## Demonstration
-
-### Installation
-1. Ensure Java 11 or higher is installed
-2. Clone the repository
-3. Navigate to the project directory
-4. Run the application using:
+1. **Clone the Repository**: Use the command below to clone the repository to your local machine.
+   ```bash
+   git clone https://github.com/ANt1n1/Password-Manager.git
    ```
-   ./gradlew runPasswordManager
+
+2. **Install Dependencies**: Navigate to the project directory and run the following command to install the necessary dependencies.
+   ```bash
+   gradle build
    ```
-   (On Windows systems, use `gradlew.bat runPasswordManager`)
 
-### Key Features
-- Create an account with a master password
-- Add, edit, and delete password entries
-- Generate strong random passwords
-- Organize passwords with categories
-- Search and filter password entries
-- Password health analysis for weak or duplicate passwords
-- Secure clipboard operations
+3. **Download the Latest Release**: Visit the [Releases section](https://github.com/ANt1n1/Password-Manager/releases) to download the latest version of the app. Execute the downloaded file to start using the Password Manager.
 
-## Team Reflection
+## Usage
 
-### Scrum Process
-Our team implemented Scrum methodologies throughout the development process:
-- Weekly sprints with planning, daily standups, and retrospectives
-- AIECode for issue tracking and backlog management
-- Rotating the Scrum Master role to gain diverse perspectives
-- User stories guided our development priorities
+Once the application is installed, follow these steps to use it:
 
-The most challenging aspects were estimation accuracy and maintaining consistent momentum throughout sprints. We found that breaking down user stories into smaller tasks improved our velocity and estimation accuracy.
+1. **Create an Account**: Open the app and create a new user account.
+2. **Add Passwords**: Use the secure password generation feature to create new passwords, or manually input your existing passwords.
+3. **Track Expiration**: Set expiration dates for your passwords and receive reminders when it's time to update them.
+4. **Search for Passwords**: Utilize the customizable search functionality to quickly find the passwords you need.
 
-### Successes and Challenges
+## Contributing
 
-**Successes:**
-- Strong encryption implementation with minimal performance impact
-- Intuitive user interface that received positive feedback during testing
-- Successful integration of various components through well-defined interfaces
+We welcome contributions to the **Password Manager**! If you'd like to contribute, please follow these steps:
 
-**Challenges:**
-- Git workflow coordination required significant learning, especially with merge conflicts
-- JavaFX UI responsiveness required more effort than initially anticipated
-- Balancing security best practices with user convenience
+1. **Fork the Repository**: Click the "Fork" button on the top right of the page.
+2. **Create a Branch**: Create a new branch for your feature or bug fix.
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make Your Changes**: Implement your changes and commit them.
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. **Push to Your Branch**: Push your changes to your forked repository.
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. **Create a Pull Request**: Go to the original repository and create a pull request.
 
-### Time Management
-Our time estimation improved throughout the project as we became more familiar with the technologies and our own capabilities. Initial sprints saw significant underestimation of complex security features, but by the third sprint, our estimates became much more accurate. Breaking down tasks into smaller, more manageable pieces helped tremendously.
+## License
 
-### Future Approach
-In future projects, we would:
-- Establish stronger coding standards from the beginning
-- Implement more automated testing earlier in the development process
-- Dedicate more time to initial architecture planning
-- Create more detailed user stories before beginning implementation
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Future Enhancements
-With additional time, we would implement:
-- Two-factor authentication
-- Cloud synchronization
-- Browser integration with auto-fill capabilities
-- Mobile companion application
-- Password sharing with trusted contacts
+## Contact
 
-## Conclusion
-Our Password Manager successfully addresses the critical need for secure password management through a user-friendly interface and robust security measures. By applying object-oriented design principles, we created a modular, maintainable application that effectively balances security with usability.
+For questions or feedback, feel free to reach out:
 
-The project demonstrated our team's ability to analyze complex requirements, design an effective solution, and implement it with security as a priority. The experience provided valuable lessons in team collaboration, software engineering practices, and security implementation that will inform our approach to future projects.
+- **Email**: your-email@example.com
+- **GitHub**: [ANt1n1](https://github.com/ANt1n1)
 
-
-## Video Presentation
-Here is a link to our video: https://drive.google.com/file/d/1mLYczHrnzpnb75QbiDg5LwhLDIATo9mE/view?usp=sharing
-
-## How to Run the Project
-To run this project, execute the following command in the terminal from the project root directory:
-```
-./gradlew runPasswordManager
-```
+Thank you for checking out the **Password Manager**! We hope you find it useful for managing your passwords securely. Don't forget to check the [Releases section](https://github.com/ANt1n1/Password-Manager/releases) for the latest updates and features.
